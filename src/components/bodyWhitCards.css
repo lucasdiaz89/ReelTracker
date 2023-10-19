@@ -1,0 +1,17 @@
+.blurred-movie {
+    filter: blur(5px);
+    opacity: 1; 
+    transition: filter 0.5s, opacity 0.5s; 
+  }
+  
+  
+  .blurred-movie.scroll-visible {
+    filter: blur(0px); 
+    opacity: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:w-1\/3 {
+      width: 16.333333%;
+    }
+  }
