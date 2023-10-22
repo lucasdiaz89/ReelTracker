@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ContextUrl } from "../components/StoreUrl";
 import { useFetch } from "../components/useFetch";
-import BodyWhitCards from "../components/bodyWhitCards";
+import BodyWhitCards from "../components/BodyWhitCards";
 
 function Home() {
   const [urlContext, setUrlContext] = useContext(ContextUrl);
