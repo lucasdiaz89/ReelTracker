@@ -24,9 +24,9 @@ function App() {
               path="/category/:categoryTypeName/:categoryGenderName"
               element={<Category />}
             />
-            <Route path="/detail/:idDetail" element={<Detail />} />
-            <Route path="/result/:searchResult" element={<Results />} />
-            <Route path="/notFound" element={<NotFound />} />
+            <Route path="/detail/:categoryTypeName/:idDetail" element={<Detail />} />
+            <Route path="/result/:searcherWord" element={<Results />} />
+            <Route path='*' element={<NotFound />}/>
             <Route path="/myFavorites" element={<Favorites />} />
             <Route path="/comingSoon" element={<ComingSoon />} />
           </Routes>

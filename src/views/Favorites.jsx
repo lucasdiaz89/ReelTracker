@@ -26,31 +26,17 @@ const [loading, setLoading] = useState(true);
           },
         };
         if (storedFavorites.length > 0) {
-          const imdbIds = await Promise.all(
+          const moviesXId = await Promise.all(
             storedFavorites.map((id) =>
               fetch(
-                `https://api.themoviedb.org/3/movie/${id}/external_ids`,
+                `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
                 options
               ).then((res) =>res.json())
             )
           );
 
-          const movieResultsArray = await Promise.all(
-            imdbIds.map((id) =>
-              fetch(
-                `https://api.themoviedb.org/3/find/${id.imdb_id}?external_source=imdb_id`,
-                options
-              )
-              .then((response) =>response.json())
-              
-            )
-          );
-
-          const flattenedMovieResults = movieResultsArray
-            .map((el) => el.movie_results)
-            .flat();
-          setFavoriteMovies(flattenedMovieResults);
-          setFavorites(flattenedMovieResults.map((el) => el.id));
+          setFavoriteMovies(moviesXId);
+          setFavorites(moviesXId.map((el) => el.id));
         }
         setLoading(false);
       } catch (error) {}
@@ -72,6 +58,7 @@ const [loading, setLoading] = useState(true);
   return (
     <>
       <BodyWhitCards
+        categoryTypeName="movie"
         dataFetch={favoriteMovies}
         loadingHome={loading}
         errorApi={null}

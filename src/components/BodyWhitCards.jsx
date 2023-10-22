@@ -7,8 +7,10 @@ import {
 } from "@heroicons/react/24/solid";
 import Loading from "./Loading";
 import ComingSoon from "../views/ComingSoon";
+import NotFound from "../views/NotFound";
 
 function BodyWhitCards({
+  categoryTypeName,
   dataFetch,
   loadingHome,
   errorApi,
@@ -150,7 +152,7 @@ function BodyWhitCards({
               onChange={(e) => handlerFilter(e.target.value)}
               type="search"
               className="block w-full px-4 py-2 text-stone-200 bg-slate-800 border dark:text-stone-900 dark:bg-slate-200 rounded-xl focus:border-slate-800 focus:ring-slate-900 dark:focus:border-slate-400 dark:focus:ring-slate-400 focus:outline-none focus:ring focus:ring-opacity-40 text-center"
-              placeholder="SEARCH FOR TITLE"
+              placeholder="FILTER FOR TITLE"
             />
           </div>
         </div>
@@ -159,7 +161,7 @@ function BodyWhitCards({
             {loadingApi ? (
               loadingCards
             ) : errorApi ? (
-              <li>{errorApi === "ComingSoon" ? <ComingSoon /> : ""}</li>
+              <li>{errorApi === "ComingSoon" ? <ComingSoon /> : <NotFound />}</li>
             ) : dataToShow.length > 0 ? (
               dataToShow.map((item, index) => (
                 <li
@@ -170,6 +172,7 @@ function BodyWhitCards({
                 >
                   <Cards
                     imageUrl={urlImage + (item.poster_path || "")}
+                    categoryTypeName={categoryTypeName}
                     title={
                       item.original_title ||
                       item.original_name ||
@@ -190,7 +193,7 @@ function BodyWhitCards({
                   />
                 </li>
               ))
-            ):("")}
+            ):<NotFound />}
           </ul>
         </div>
         <div className="flex justify-center mt-12">

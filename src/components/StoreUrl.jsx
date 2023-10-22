@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 
 
 const urlInitial={
+    urlFetch:"",
     url:"https://api.themoviedb.org/3/discover/",
     name:"TMDB",
     categoryTypeName:"movie",
@@ -21,10 +22,10 @@ const urlInitial={
 export const ContextUrl=createContext();
 
 const StoreUrl=(props)=> {
-    const [urlState,setUrlState]=useState(urlInitial);
+    const [urlContext,setUrlContext]=useState(urlInitial);
 
     return (
-        <ContextUrl.Provider value={[urlState,setUrlState]}>{props.children}</ContextUrl.Provider>
+        <ContextUrl.Provider value={[urlContext,setUrlContext]}>{props.children}</ContextUrl.Provider>
     );
 };
 

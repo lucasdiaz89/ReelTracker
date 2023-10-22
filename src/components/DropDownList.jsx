@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function DropDownList(props) {
   const [isActive, setIsActive] = useState(false);
   const [isHoverDDL, setIsHoverDDL] = useState(false);
-  const [state, setState] = useContext(ContextUrl);
+  const [urlContext, setUrlContext] = useContext(ContextUrl);
 
   const menu = props.Menu;
   const options = props.options;
@@ -39,8 +39,13 @@ function DropDownList(props) {
         urlImage: urlLink.filterUrlImage,
         headerKey: urlLink.filterURLHeaderKey,
       };
+      
+      const obligator="include_adult="+urlChange.params.include_adult+"&include_video="+urlChange.params.include_video+"&language="+urlChange.params.language+"&page="+urlChange.params.page+"&sort_by="+urlChange.params.sort_by+"&with_genres="
+     
+      urlChange.urlFetch=urlChange.url+urlChange.categoryTypeName+"?"+obligator+urlChange.categoryGenderId;
+
       setIsHoverDDL(!isHoverDDL);
-      setState(urlChange);
+      setUrlContext(urlChange);
   };
 
   return (

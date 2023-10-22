@@ -4,9 +4,11 @@ import {
   StarIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Cards({
   imageUrl,
+  categoryTypeName,
   title,
   rating,
   reviews,
@@ -22,10 +24,10 @@ function Cards({
     loadingApi ? "bg-[#f0f0f0]" : ""
   }`;
 
-  const cardImage = `mb-2 text-xl font-bold tracking-tight  ${
+  const titleClasses = `mb-2 text-xl font-bold tracking-tight  ${
     loadingApi
       ? "text-gray-900 dark:text-gray-500"
-      : "text-gray-900 dark:text-white"
+      : "text-gray-900 dark:text-white no-underline hover:underline"
   }`;
 
   const [isLiked, setIsLiked] = useState(favoriteBody);
@@ -69,7 +71,7 @@ function Cards({
           src={imageUrl}
           alt=""
         />
-
+      
         <svg
           className={likeIcon}
           aria-hidden="true"
@@ -81,7 +83,9 @@ function Cards({
         </svg>
 
         <div className="p-5">
-          <h3 className={cardImage}>{loadingApi ? "Loading..." : title}</h3>
+          <Link to={`/detail/${categoryTypeName}/${idSelection}`}>            
+            <h3 className={titleClasses}>{loadingApi ? "Loading..." : title}</h3>
+          </Link>
           {loadingApi ? (
             <div className="animate-pulse">
               <div className="w-full h-4 mt-2 mb-4 bg-gray-300 dark:bg-gray-600 rounded-lg"></div>

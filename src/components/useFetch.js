@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 
-export function useFetch(stateLink) {
+export function useFetch(urlContext) {
   const [data, setData] = useState({ results: [] });  
   const [loadingApi, setLoadingApi] = useState(true);
   const [errorApi, setErrorApi] = useState(null);
   const errorComingSoon = "";
-
 
   useEffect(() => {
 
@@ -14,24 +13,21 @@ export function useFetch(stateLink) {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: stateLink.headerKey,
+        Authorization: urlContext.headerKey,
       },
     };
     
-    const obligator="include_adult="+stateLink.params.include_adult+"&include_video="+stateLink.params.include_video+"&language="+stateLink.params.language+"&page="+stateLink.params.page+"&sort_by="+stateLink.params.sort_by+"&with_genres="
-    
-    const newUrl=stateLink.url + stateLink.categoryTypeName+"?"+obligator+stateLink.categoryGenderId;
 
     setData({ results: [] });
   
 
-    if (stateLink.url !="") {
-      const delay = 3000;
+    if (urlContext.url !="") {
+      const delay = 0;
       
       setLoadingApi(true);
       const fetchData = () => {
         setData({ results: [] });
-        fetch(newUrl, options)
+        fetch(urlContext.urlFetch, options)
           .then((response) => response.json())
           .then((json) => {
             setData(json);
@@ -50,7 +46,7 @@ export function useFetch(stateLink) {
       setData({ results: [] });
       setLoadingApi(false);
     }
-  }, [stateLink]);
+  }, [urlContext]);
 
 
   return { data, loadingApi, errorApi };
