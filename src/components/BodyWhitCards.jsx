@@ -1,6 +1,6 @@
 import Cards from "./Cards";
 import { useEffect, useState, useRef } from "react";
-import "./BodyWhitCards.css";
+import "./bodyWhitCards.css";
 import {
   ArrowRightCircleIcon,
   ArrowLeftCircleIcon,
