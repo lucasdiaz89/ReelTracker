@@ -26,6 +26,7 @@ function Results(){
   }, [data]);
   return (
     <>
+
       <BodyWhitCards
         categoryTypeName="movie"
         dataFetch={dataApi}

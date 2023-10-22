@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DropDownList from "./DropDownList";
+import {DropDownList} from "./DropDownList";
 import ImageChangeTheme from "./ImageChangeTheme";
 import {
   FilmIcon,
