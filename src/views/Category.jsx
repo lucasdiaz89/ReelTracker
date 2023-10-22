@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { ContextUrl } from "../components/StoreUrl";
 import { Navigate, useParams } from "react-router-dom";
 import { CategoryGender } from "../components/dataMenu";
-import BodyWhitCards from "../components/bodyWhitCards";
+import BodyWhitCards from "../components/BodyWhitCards";
 import { useFetch } from "../components/useFetch";
 function Category() {
   

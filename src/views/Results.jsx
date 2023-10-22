@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../components/useFetch";
 import { useContext, useEffect, useState } from "react";
-import BodyWhitCards from "../components/bodyWhitCards";
+import BodyWhitCards from "../components/BodyWhitCards";
 import { ContextUrl } from "../components/StoreUrl";
 
 function Results(){

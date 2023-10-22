@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BodyWhitCards from "../components/bodyWhitCards";
+import BodyWhitCards from "../components/BodyWhitCards";
 
 function Favorites() {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
